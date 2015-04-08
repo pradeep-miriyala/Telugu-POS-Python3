@@ -4,7 +4,7 @@ TAG2VERT=./bin/tag2vert.py
 TOKENIZER=./bin/unitok.py -l telugu -n
 
 tag:
-	cat telugu.input.txt | $(TOKENIZER) | sed -e 's/^\.$$/.\n<\/s>\n<s>/g' > telugu.tmp.words
+	cat telugu.input.txt | $(TOKENIZER) | sed -e 's/^\.$$/.\n<\/s>\n<s>/g' | sed -e 's/^\?$$/?\n<\/s>\n<s>/g' > telugu.tmp.words
 	$(TAGGER) telugu.tmp.words | sed -e 's/\t\+/\t/g' | $(LEMMATIZER) | $(TAG2VERT) > telugu.output.txt
 	rm telugu.tmp.words
 	echo "Output stored in telugu.output.txt"
