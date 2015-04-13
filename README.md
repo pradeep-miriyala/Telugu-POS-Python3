@@ -42,9 +42,23 @@ Case                3      d, o, null
 
 ## Citation:
 
-Please cite either [http://sivareddy.in/downloads](http://sivareddy.in/downloads) or (Reddy and Sharoff, 2011). 
+Please cite either [http://sivareddy.in/downloads](http://sivareddy.in/downloads) or the reference below. Paper can be downloaded from: http://sivareddy.in/papers/clia2011IndianCrossLang.pdf
 
-Paper can be downloaded from: http://sivareddy.in/papers/clia2011IndianCrossLang.pdf
+```
+
+@InProceedings{reddy-sharoff:2011:CLIA5,
+  author    = {Reddy, Siva  and  Sharoff, Serge},
+  title     = {Cross Language POS Taggers (and other Tools) for Indian Languages: An Experiment with Kannada using Telugu Resources},
+  booktitle = {Proceedings of the Fifth International Workshop On Cross Lingual Information Access},
+  month     = {November},
+  year      = {2011},
+  address   = {Chiang Mai, Thailand},
+  publisher = {Asian Federation of Natural Language Processing},
+  pages     = {11--19},
+  url       = {http://www.aclweb.org/anthology/W11-3603}
+}
+
+```
 
 This work is supported by Intellitext [1] project and Lexical Computing Ltd [2] (Sketch Engine)
 [1] http://corpus.leeds.ac.uk/it/
@@ -116,20 +130,3 @@ QO  9   1.000000    1.000000    1.000000
 Bharati, Akshar, Rajeev Sangal, Dipti Misra Sharma, and Lakshmi Bai. "Anncorra: Annotating corpora guidelines for pos and chunk annotation for indian languages." LTRC-TR31 (2006).
 
 Reddy, Siva, and Serge Sharoff. "Cross language POS taggers (and other tools) for Indian languages: An experiment with Kannada using Telugu resources." Cross Lingual Information Access (2011): 11.
-
-```
-
-@InProceedings{reddy-sharoff:2011:CLIA5,
-  author    = {Reddy, Siva  and  Sharoff, Serge},
-  title     = {Cross Language POS Taggers (and other Tools) for Indian Languages: An Experiment with Kannada using Telugu Resources},
-  booktitle = {Proceedings of the Fifth International Workshop On Cross Lingual Information Access},
-  month     = {November},
-  year      = {2011},
-  address   = {Chiang Mai, Thailand},
-  publisher = {Asian Federation of Natural Language Processing},
-  pages     = {11--19},
-  url       = {http://www.aclweb.org/anthology/W11-3603}
-}
-
-```
-
