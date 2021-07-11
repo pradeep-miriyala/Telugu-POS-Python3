@@ -727,7 +727,7 @@ def main(*args):
                     tokens = tokenise(uline, lsd, glue)
                     if not first_line:
                         tokens.insert(0, u"") # force starting newline
-                    sys.stdout.write(u"\n".join(tokens).encode(encoding, 'replace'))
+                    sys.stdout.buffer.write(u"\n".join(tokens).encode(encoding, 'replace'))
                     first_line = False
             else:
                 data = fp.read()
@@ -739,11 +739,11 @@ def main(*args):
                         udata = data.encode(encoding, 'replace')
                 udata = udata.decode(encoding)
                 tokens = tokenise(udata, lsd, glue)
-                sys.stdout.write(u"\n".join(tokens).encode(encoding, 'replace'))
+                sys.stdout.buffer.write(u"\n".join(tokens).encode(encoding, 'replace'))
         finally:
             if input_file != '-':
                 fp.close()
-            sys.stdout.write(u"\n".encode(encoding))
+            sys.stdout.buffer.write(u"\n".encode(encoding))
 
 if __name__ == "__main__":
     import sys
