@@ -22,9 +22,11 @@ http://jrgraphix.net/r/Unicode/
 # Replace python2 print with python3 print
 # Change ValueError invokation using parenthesis
 # Replace dict.has_key with in
+# Change in way exceptions are caught
 # Ref: https://bugs.python.org/issue15096
 # Ref: https://docs.python.org/3/whatsnew/3.0.html
 # Ref : https://docs.python.org/3.1/whatsnew/3.0.html#builtins
+# Ref: https://docs.python.org/3/tutorial/errors.html#handling-exceptions
 
 import re
 
@@ -655,7 +657,7 @@ def main(*args):
     try:
         opts, args = getopt.getopt(args, "l:e:nsh",
                 ["language=", "encoding=", "no-glue", "stream", "help"])
-    except getopt.GetoptError, err:
+    except getopt.GetoptError as err:
         print(err,file=sys.stderr)
         print(usage(),file=sys.stderr)
         sys.exit(2)
@@ -716,7 +718,7 @@ def main(*args):
                 for (lineno0, line) in enumerate(fp):
                     try:
                         uline = unicode(line, encoding)
-                    except UnicodeDecodeError, detail:
+                    except UnicodeDecodeError as detail:
                         if not quiet:
                             print(sys.stderr, "warning: %s, line %i: %s" % (
                                     fp_desc, lineno0+1, str(detail)),file=sys.stderr)
@@ -730,7 +732,7 @@ def main(*args):
                 data = fp.read()
                 try:
                     udata = unicode(data, encoding)
-                except UnicodeDecodeError, detail:
+                except UnicodeDecodeError as detail:
                     if not quiet:
                         print(sys.stderr, "warning: %s: %s" % (fp_desc, str(detail))
                     udata = unicode(data, encoding, 'replace'),file=sys.stderr)
