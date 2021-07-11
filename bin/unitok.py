@@ -17,10 +17,14 @@ http://jrgraphix.net/r/Unicode/
 (c) 2009 Jan Pomikalek <jan.pomikalek@gmail.com>
 """
 
-# Changed "ur" usage to "r" as Python 3 doesn't support "ur". - Pradeep 11-Jul-2021
+# Pradeep Miriyala 11-Jul-2021
+# Changed "ur" usage to "r" as Python 3 doesn't support "ur".
+# Replace python2 print with python3 print
+# Change ValueError invokation using parenthesis
+# Replace dict.has_key with in
 # Ref: https://bugs.python.org/issue15096
-# Replace python2 print with python3 print - Pradeep 11-Jul-2021
 # Ref: https://docs.python.org/3/whatsnew/3.0.html
+# Ref : https://docs.python.org/3.1/whatsnew/3.0.html#builtins
 
 import re
 
@@ -239,12 +243,12 @@ def htmlent2unicode(htmlent, dont_convert=[]):
         name = m.group(1)
         if name in dont_convert:
             return htmlent
-        if htmlentitydefs.name2codepoint.has_key(name):
+        if name in htmlentitydefs.name2codepoint:
             return unichr(htmlentitydefs.name2codepoint[name])
         else:
             # return entities with unknown names unchanged
             return htmlent
-    raise ValueError, "invalid HTML entity: %s" % htmlent
+    raise ValueError("invalid HTML entity: %s" % htmlent)
 
 def robust_htmlent2unicode(htmlent, dont_convert=[]):
     try:
@@ -664,7 +668,7 @@ def main(*args):
     for o, a in opts:
         if o in ("-l", "--language"):
             language = a.lower()
-            if not LANGUAGE_DATA.has_key(language):
+            if not language in LANGUAGE_DATA:
                 print("unsupported language: %s" % a,file=sys.stderr)
                 print("supported languages: %s" % ", ".join(LANGUAGE_DATA.keys()),file=sys.stderr)
                 print("",file=sys.stderr)

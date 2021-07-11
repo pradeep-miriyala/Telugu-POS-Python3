@@ -9,8 +9,11 @@ word2	tag2
 .
 '''
 
-# Replace python2 print with python3 print - Pradeep 11-Jul-2021
+# Pradeep Miriyala 11-Jul-2021
+# Replace python2 print with python3 print
+# Replace dict.has_key with in
 # Ref: https://docs.python.org/3/whatsnew/3.0.html
+# Ref : https://docs.python.org/3.1/whatsnew/3.0.html#builtins
 
 import sys
 import re
@@ -21,11 +24,11 @@ def loadLemmatiser(file):
         line=line.strip()
         word= line.split('\t')[0]
         tags= line.split('\t')[1:]
-        if not lemmaDict.has_key(word):
+        if not word in lemmaDict:
             lemmaDict[word]= {}
         for t in tags:
             (tag, lemma)= t.split(' ')
-            if lemmaDict[word].has_key(tag):
+            if tag in lemmaDict[word]:
                 continue
             if lemma.strip()!="":
                 lemmaDict[word][tag]= lemma
@@ -44,7 +47,7 @@ def lemmatise(f):
                 #print cols
                 print(line)
             else:
-                if lemmaDict.has_key(cols[0]) and lemmaDict[cols[0]].has_key(cols[1]):
+                if cols[0] in lemmaDict and cols[1] in lemmaDict[cols[0]]:
                     print("%s\t%s" %(line, lemmaDict[cols[0]][cols[1]]))
                 else:
                     print("%s\t%s" %(line, cols[0]+"."))
