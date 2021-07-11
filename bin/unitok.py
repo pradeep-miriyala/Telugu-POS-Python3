@@ -723,6 +723,7 @@ def main(*args):
                             print("warning: %s, line %i: %s" % (
                                     fp_desc, lineno0+1, str(detail)),file=sys.stderr)
                         uline = line.encode(encoding, 'replace')
+                    uline = uline.decode(encoding)
                     tokens = tokenise(uline, lsd, glue)
                     if not first_line:
                         tokens.insert(0, u"") # force starting newline
@@ -736,6 +737,7 @@ def main(*args):
                     if not quiet:
                         print("warning: %s: %s" % (fp_desc, str(detail)),file=sys.stderr)
                         udata = data.encode(encoding, 'replace')
+                udata = udata.decode(encoding)
                 tokens = tokenise(udata, lsd, glue)
                 sys.stdout.write(u"\n".join(tokens).encode(encoding, 'replace'))
         finally:
