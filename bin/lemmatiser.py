@@ -52,5 +52,6 @@ def lemmatise(f):
                 else:
                     print(("%s\t%s" %(line, cols[0]+".")))
             
-loadLemmatiser(sys.argv[1])
-lemmatise(sys.stdin)
+if __name__ == "__main__":
+    loadLemmatiser(sys.argv[1])
+    lemmatise(sys.stdin)
