@@ -722,7 +722,7 @@ def main(*args):
                         if not quiet:
                             print("warning: %s, line %i: %s" % (
                                     fp_desc, lineno0+1, str(detail)),file=sys.stderr)
-                        uline = unicode(line, encoding, 'replace')
+                        uline = line.encode(encoding, 'replace')
                     tokens = tokenise(uline, lsd, glue)
                     if not first_line:
                         tokens.insert(0, u"") # force starting newline
@@ -731,11 +731,11 @@ def main(*args):
             else:
                 data = fp.read()
                 try:
-                    udata = unicode(data, encoding)
+                    udata = data.encode(encoding)
                 except UnicodeDecodeError as detail:
                     if not quiet:
                         print("warning: %s: %s" % (fp_desc, str(detail)),file=sys.stderr)
-                        udata = unicode(data, encoding, 'replace')
+                        udata = data.encode(encoding, 'replace')
                 tokens = tokenise(udata, lsd, glue)
                 sys.stdout.write(u"\n".join(tokens).encode(encoding, 'replace'))
         finally:
