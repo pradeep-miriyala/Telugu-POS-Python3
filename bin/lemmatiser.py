@@ -9,6 +9,9 @@ word2	tag2
 .
 '''
 
+# Replace python2 print with python3 print - Pradeep 11-Jul-2021
+# Ref: https://docs.python.org/3/whatsnew/3.0.html
+
 import sys
 import re
 
@@ -31,20 +34,20 @@ def lemmatise(f):
     for line in f:
         line= line.strip()
         if line=="":
-            print line
+            print(line)
         elif line[0]=='<':
-            print line
+            print(line)
         else:
             #line.sub("\t+")
             cols= line.split()
             if len(cols)!=2:
                 #print cols
-                print line
+                print(line)
             else:
                 if lemmaDict.has_key(cols[0]) and lemmaDict[cols[0]].has_key(cols[1]):
-                    print "%s\t%s" %(line, lemmaDict[cols[0]][cols[1]])
+                    print("%s\t%s" %(line, lemmaDict[cols[0]][cols[1]]))
                 else:
-                    print "%s\t%s" %(line, cols[0]+".")
+                    print("%s\t%s" %(line, cols[0]+"."))
             
 loadLemmatiser(sys.argv[1])
 lemmatise(sys.stdin)
