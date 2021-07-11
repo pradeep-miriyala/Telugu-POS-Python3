@@ -720,7 +720,7 @@ def main(*args):
                         uline = unicode(line, encoding)
                     except UnicodeDecodeError as detail:
                         if not quiet:
-                            print(sys.stderr, "warning: %s, line %i: %s" % (
+                            print("warning: %s, line %i: %s" % (
                                     fp_desc, lineno0+1, str(detail)),file=sys.stderr)
                         uline = unicode(line, encoding, 'replace')
                     tokens = tokenise(uline, lsd, glue)
@@ -734,7 +734,8 @@ def main(*args):
                     udata = unicode(data, encoding)
                 except UnicodeDecodeError as detail:
                     if not quiet:
-                        print("warning: %s: %s" % (fp_desc, str(detail)) udata = unicode(data, encoding, 'replace'),file=sys.stderr)
+                        print("warning: %s: %s" % (fp_desc, str(detail)),file=sys.stderr)
+                        udata = unicode(data, encoding, 'replace')
                 tokens = tokenise(udata, lsd, glue)
                 sys.stdout.write(u"\n".join(tokens).encode(encoding, 'replace'))
         finally:
