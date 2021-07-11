@@ -717,7 +717,7 @@ def main(*args):
                 first_line = True
                 for (lineno0, line) in enumerate(fp):
                     try:
-                        uline = unicode(line, encoding)
+                        uline = line.encode(encoding)
                     except UnicodeDecodeError as detail:
                         if not quiet:
                             print("warning: %s, line %i: %s" % (

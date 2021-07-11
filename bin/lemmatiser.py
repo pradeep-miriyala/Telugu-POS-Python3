@@ -48,9 +48,9 @@ def lemmatise(f):
                 print(line)
             else:
                 if cols[0] in lemmaDict and cols[1] in lemmaDict[cols[0]]:
-                    print("%s\t%s" %(line, lemmaDict[cols[0]][cols[1]]))
+                    print(("%s\t%s" %(line, lemmaDict[cols[0]][cols[1]])))
                 else:
-                    print("%s\t%s" %(line, cols[0]+"."))
+                    print(("%s\t%s" %(line, cols[0]+".")))
             
 loadLemmatiser(sys.argv[1])
 lemmatise(sys.stdin)
