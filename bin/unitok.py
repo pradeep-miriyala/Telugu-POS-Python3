@@ -734,8 +734,7 @@ def main(*args):
                     udata = unicode(data, encoding)
                 except UnicodeDecodeError as detail:
                     if not quiet:
-                        print(sys.stderr, "warning: %s: %s" % (fp_desc, str(detail))
-                    udata = unicode(data, encoding, 'replace'),file=sys.stderr)
+                        print("warning: %s: %s" % (fp_desc, str(detail)) udata = unicode(data, encoding, 'replace'),file=sys.stderr)
                 tokens = tokenise(udata, lsd, glue)
                 sys.stdout.write(u"\n".join(tokens).encode(encoding, 'replace'))
         finally:
